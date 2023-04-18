@@ -1,25 +1,25 @@
 <?php
-require_once __DIR__.'/Models/dog.php';
-require_once __DIR__.'/Models/cat.php';
-require_once __DIR__.'/Models/fish.php';
-require_once __DIR__.'/Models/bird.php';
+require_once __DIR__.'/Models/Category.php';
+require_once __DIR__.'/Models/Product.php';
+require_once __DIR__.'/Models/Food.php';
 
-$dog1 = new Dog("Crocchette per cani", "Crochette pollo e tacchino", 10.99, "Doberman", "Grande");
-$dog2 = new Dog("Orecchie di maiale", "Maiale francese, prodotto liofilizzato", 4.99, "Tutte", "Tutti");
-$dog3 = new Dog("Dentifricio per cani", "Pastiglie da 5 grammi", 1.99, "Tutte", "Tutti");
-$cat1 = new Cat("Crocchette per gatti", "Crochette salmone e acciughe", 6.99, "Persiano", "Medio");
-$cat2 = new Cat("Scatoletta mela", "Mela Golden e Delicious 300g", 7.99, "Tutte", "Tutti");
-$cat3 = new Cat("Gomitolo in lana merinos", "Gomitolo rotolo e srotolo", 3.25, "Tutte", "Tutti");
-$fish1 = new Fish("Mangime per pesci", "Acciughe e alghe 100g", 7.99, "Pesce Pagliaccio", "Medio");
-$fish2 = new Fish("Alghe decorative", "Alghe Guam del Mar Nero 5 pezzi", 24.99, "Tutte", "Tutti");
-$fish3 = new Fish("Set pulizia acquario", "Kit a tre pezzi, spatola secchiello e snorkel", 45.35, "Tutte", "Tutti");
-$bird1 = new Bird("Mangime per uccelli", "Vermi e Blatte 125g", 1.99, "Cormorano", "Medio");
-$bird2 = new Bird("Trespolo in legno", "Trespolo in legno d'acacia, 30 cm", 24.99, "Tutte", "Grande");
-$bird3 = new Bird("Abbeveratoio", "Inserto per bere da gabbia", 45.35, "Tutte", "Medio");
+$category_dog = new Category('Dog', '<i class="fa-solid fa-dog"></i>');
+$category_cat = new Category('Cat', '<i class="fa-solid fa-cat"></i>');
+$category_bird = new Category('Bird', '<i class="fa-solid fa-dove"></i>');
+$category_fish = new Category('Fish', '<i class="fa-solid fa-fish"></i>');
+
+$product1 = new Product(10, 'Guinzaglio', 'Guinzaglio da collo lunghezza 3 metri', '$category_dog', 15.99, '#');
+$product2 = new Product(20, 'Osso di gomma', 'Osso di comma lunghezza 3 metri', '$category_dog', 27.99, '#');
+$product3 = new Food(30, 'Croccantini', 'Croccantini di pollo e tacchino', '$category_cat', 15.99, '#');
+$product3 = new Food(30, 'Croccantini', 'Croccantini di pollo e tacchino', '$category_cat', 15.99, '#');
+
+$products = [
+    $product1,
+    $product2,
+    $product3,
+];
 
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,24 +27,30 @@ $bird3 = new Bird("Abbeveratoio", "Inserto per bere da gabbia", 45.35, "Tutte", 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Boolshop</title>
 </head>
 <body>
-    <h1>Boolshop</h1>
-    
-    <?php 
-    $dog1->sprint();
-    $dog2->sprint();
-    $dog3->sprint(); 
-    $cat1->sprint();
-    $cat2->sprint();
-    $cat3->sprint(); 
-    $fish1->sprint();
-    $fish2->sprint();
-    $fish3->sprint(); 
-    $bird1->sprint();
-    $bird2->sprint();
-    $bird3->sprint(); 
-    ?>
+    <div class="container">
+    <h1>Pet Shop Boolean</h1>
+        <div class="row">
+            <?php foreach($products as $product): ?>
+                <div class="col-12 col-md-3">
+                    <div class="card">
+                        <img src="..." class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo $product->get_name(); ?></h5>
+                            <p class="card-text"><?php echo $product->get_description(); ?></p>
+                            <p>Price: <?php echo $product->get_price(); ?></p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
 </body>
 </html>

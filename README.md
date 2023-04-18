@@ -8,4 +8,5 @@ I prodotti possono appartenere a una tra queste categorie:
 - Gatto
 - Uccelli
 - Pesci
+
 Una volta create le classi che descrivono il nostro sistema, instanziate prima tutte le categorie che ci serviranno, poi create alcuni prodotti di differenti categorie e stampateli nella pagina sotto forma di schede.
