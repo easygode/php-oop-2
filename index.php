@@ -8,10 +8,9 @@ $category_cat = new Category('Cat', '<i class="fa-solid fa-cat"></i>');
 $category_bird = new Category('Bird', '<i class="fa-solid fa-dove"></i>');
 $category_fish = new Category('Fish', '<i class="fa-solid fa-fish"></i>');
 
-$product1 = new Product(10, 'Guinzaglio', 'Guinzaglio da collo lunghezza 3 metri', '$category_dog', 15.99, '#');
-$product2 = new Product(20, 'Osso di gomma', 'Osso di comma lunghezza 3 metri', '$category_dog', 27.99, '#');
-$product3 = new Food(30, 'Croccantini', 'Croccantini di pollo e tacchino', '$category_cat', 15.99, '#');
-$product3 = new Food(30, 'Croccantini', 'Croccantini di pollo e tacchino', '$category_cat', 15.99, '#');
+$product1 = new Product(10, 'Guinzaglio', 'Guinzaglio da collo lunghezza 3 metri', '$category_dog', 15.99, 'img/dog_pic.png');
+$product2 = new Product(20, 'Osso di gomma', 'Osso di comma lunghezza 3 metri', '$category_dog', 27.99, 'img/osso-cani.png');
+$product3 = new Food(30, 'Croccantini', 'Croccantini di pollo e tacchino', '$category_cat', 15.99, 'img/croc-cat.png');
 
 $products = [
     $product1,
@@ -40,11 +39,11 @@ $products = [
             <?php foreach($products as $product): ?>
                 <div class="col-12 col-md-3">
                     <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
+                        <img src="<?php echo $product->get_image(); ?>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $product->get_name(); ?></h5>
                             <p class="card-text"><?php echo $product->get_description(); ?></p>
-                            <p>Price: <?php echo $product->get_price(); ?></p>
+                            <p>Prezzo: <?php echo $product->get_price(); ?> €</p>
                             <a href="#" class="btn btn-primary">Go somewhere</a>
                         </div>
                     </div>
